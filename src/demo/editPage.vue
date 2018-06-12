@@ -3,19 +3,19 @@
   <div >
     <div id="editor">
 		<div class="imgDiv">
-			<input type="file"  class="img_input"/>	
+			<input  @change="showImg" type="file"  class="img_input"/>	
         	<img src="../assets/image/car.png" />
 		</div>	
 		<div class="imgDiv">
-			<input type="file"  class="img_input"/>	
+			<input @change="showImg" type="file"  class="img_input"/>	
         	<img src="../assets/image/car.png" />
 		</div>
 		<div class="imgDiv">
-			<input type="file"  class="img_input"/>	
+			<input @change="showImg" type="file"  class="img_input"/>	
         	<img src="../assets/image/car.png" />
 		</div>
 		<div class="imgDiv">
-			<input type="file"  class="img_input"/>	
+			<input @change="showImg" type="file"  class="img_input"/>	
         	<img src="../assets/image/car.png" />
 		</div>
 		<!--<div class="videoDiv" >
@@ -23,7 +23,7 @@
 		</div>-->
 		<div class="videoDiv" >
 		<div>
-		<input type="file"  class="video_input"/> 
+		<input @change="showVideo" type="file"  class="video_input"/> 
 		点击上传视频
 		</div>	
 		<video style="display: none;" src="" controls autoplay ></video >
@@ -43,13 +43,50 @@ export default {
   name: 'EditPage',
   data () {
     return {
+        video:{}
     }
   },
   created:function(){
-     alert(1);
+    let _this = this;
+    // _this.showImg();
+    // _this.showVideo();
+    // _this.previewFun();
+    // _this.submitFun();
   },
   methods:{
-
+    showImg: function(event){
+        let _this = event.currentTarget;
+        let file = _this.files[0];
+        if(!/image/g.test(file.type))           //判断获取的是否为图片文件  
+        {  
+            alert("请确保文件为图像文件");  
+            return ;  
+        } 
+        var reader=new FileReader(); 
+        reader.addEventListener("load", function () {
+            _this.nextElementSibling.src = reader.result;
+            }, false);
+            
+        reader.readAsDataURL(file); 
+                    
+            
+    },
+    showVideo: function(event){
+        let _this = event.currentTarget;;
+        let file = _this.files[0];
+        
+        if(!/video/g.test(file.type))           //判断获取的是否为视频文件  
+            {  
+                alert("请确保文件为视频文件");  
+                return ;  
+            } 
+        this.video = new FormData();
+        this.video.append('file', file);
+        this.video.append('id', "123455");
+        var obj_url = window.URL.createObjectURL(file);//获取视频地址
+        _this.parentElement.nextElementSibling.src = obj_url;    
+        _this.parentElement.nextElementSibling.style.display="block"; 
+    },
   }
  
 }
