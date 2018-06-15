@@ -9,8 +9,7 @@ export default {
    created:function(){
       let _this = this;
      setTimeout(function(){
-     new QRCode("qrcode");
-     this.rqcodeId
+    _this.$route.params.id;
       var qrcode = new QRCode("qrcode", {
             text: "http://172.17.188.102:8020/showQRcode/index.html?id="+_this.rqcodeId,
             width: 200,
@@ -18,7 +17,7 @@ export default {
             colorDark: '#efb73e',
             colorLight: "#ffffff"
             });
- },2000);
+ },500);
 
    },
   };
