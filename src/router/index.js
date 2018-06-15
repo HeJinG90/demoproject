@@ -3,7 +3,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 import Home from '@/components/home'
 import EditPage from '../demo/editPage'
-
+import QrcodePage from '../demo/qrcodePage'
 
 export default new Router({
     routes: [{
@@ -15,6 +15,11 @@ export default new Router({
             path: '/editPage',
             name: 'EditPage',
             component: EditPage
+        },
+        {
+            path: '/qrcodePage',
+            name: 'QrcodePage',
+            component: QrcodePage
         }
     ]
 })
