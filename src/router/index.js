@@ -4,6 +4,7 @@ Vue.use(Router)
 import Home from '@/components/home'
 import EditPage from '../demo/editPage'
 import QrcodePage from '../demo/qrcodePage'
+import VuexTest from '../demo/vuexTest'
 
 export default new Router({
     routes: [{
@@ -20,6 +21,11 @@ export default new Router({
             path: '/qrcodePage',
             name: 'QrcodePage',
             component: QrcodePage
+        },
+        {
+            path: '/vuexTest',
+            name: 'VuexTest',
+            component: VuexTest
         }
     ]
 })
