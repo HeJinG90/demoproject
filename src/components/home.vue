@@ -1,7 +1,9 @@
 
+import func from './vue-temp/vue-editor-bridge';
 <template>
   <div class="home" >
        <p @click="gotoEditPage">跳转到editPage</p>
+       <p @click="gotoVuexTestPage">跳转到vuexTest</p>
   </div>
 </template>
 <style scoped>
@@ -18,6 +20,9 @@ export default {
   methods:{
     gotoEditPage:function(){
       this.$router.push({name:'EditPage'});
+    },
+    gotoVuexTestPage:function(){
+      this.$router.push({name:'VuexTest'});
     }
   }
 }

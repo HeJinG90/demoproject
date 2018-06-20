@@ -2,7 +2,6 @@
 // import func from './vue-temp/vue-editor-bridge';
 <template>
   <div >
-    <div  id="qrcode" style="margin-left: 40%;margin-bottom: 0.2rem" ></div> 
     <div id="editor">
 		<div class="imgDiv">
 			<input  @change="showImg" type="file"  class="img_input"/>	
@@ -63,7 +62,6 @@ export default {
       shade:false,
       html: "",
       imgSlideShow: false,
-      rqcodeId:'',
     };
   },
 
@@ -161,7 +159,6 @@ export default {
     _this.formData.append("id", new Date().getTime());
     _this.formData.append("textareainput", _this.textareainput);
     // 上传接口
-    debugger
     _this.$ajax({
         method: "post",
         url: "http://172.17.188.111:8080/upload/save",
@@ -169,16 +166,7 @@ export default {
       })
         .then(function(response) {
             if(response.status==200){
-            // _this.rqcodeId = response.data.id;
-            // _this.$router.push({name:'QrcodePage'});
-            var qrcode = new QRCode("qrcode", {
-            text: "http://172.17.188.102:8020/showQRcode/index.html?id="+response.data.id,
-            width: 200,
-            height: 200,
-            colorDark: '#efb73e',
-            colorLight: "#ffffff"
-            });
-
+            _this.$router.push({name:'QrcodePage',params: { id:  response.data.id } });
            }else{
                alert('传输失败');
            }
@@ -188,7 +176,7 @@ export default {
             alert('服务器错误');
           loading.close();
         });
-      // _this.$router.push({name:'QrcodePage'});
+     
       //  location.reload();
     }
   }
