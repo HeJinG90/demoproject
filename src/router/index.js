@@ -6,11 +6,22 @@ import EditPage from '../demo/editPage'
 import QrcodePage from '../demo/qrcodePage'
 import VuexTest from '../demo/vuexTest'
 
-export default new Router({
+
+const router = new Router({
     routes: [{
             path: '/',
             name: 'Home',
-            component: Home
+            component: Home,
+            // meta: { loginAuth: true },
+            // components: {
+            //     default: Home,
+            //     a: EditPage
+            // },
+            beforeEnter: (to, from, next) => {
+                // next('/vuexTest');
+                next();
+
+            }
         },
         {
             path: '/editPage',
@@ -28,4 +39,9 @@ export default new Router({
             component: VuexTest
         }
     ]
+});
+router.beforeEach((to, from, next) => {
+    next();
 })
+
+export default router;

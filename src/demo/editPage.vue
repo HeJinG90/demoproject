@@ -1,7 +1,10 @@
 
 // import func from './vue-temp/vue-editor-bridge';
+
 <template>
+<transition name="fade">
   <div >
+    <div @click="goBack">返回</div>
     <div id="editor">
 		<div class="imgDiv">
 			<input  @change="showImg" type="file"  class="img_input"/>	
@@ -45,6 +48,7 @@
 
     <div v-show="shade" class="mui-backdrop " v-on:click='hideShade'></div>
   </div>
+  </transition>
 </template>
 <script>
 export default {
@@ -64,12 +68,16 @@ export default {
       imgSlideShow: false,
     };
   },
-
   created: function() {
     let _this = this;
     _this.setPreviewWrapLeft();
   },
   methods: {
+     goBack:function(){
+       window.history.length > 1
+        ? this.$router.go(-1)
+        : this.$router.push('/');
+     },
     //隐藏遮罩
     hideShade:function(){
       var _this = this;
@@ -149,13 +157,14 @@ export default {
       }
     },
     submitFun: function() {
-        const loading = this.$loading({ //上传中
-            lock: true,
-            text: '上传中,请稍等',
-            spinner: 'el-icon-loading',
-            background: 'rgba(0, 0, 0, 0.7)'
-        });
+        // const loading = this.$loading({ //上传中
+        //     lock: true,
+        //     text: '上传中,请稍等',
+        //     spinner: 'el-icon-loading',
+        //     background: 'rgba(0, 0, 0, 0.7)'
+        // });
     let _this = this;
+    _this.$router.push({name:'QrcodePage',query: { id:  1233 } });
     _this.formData.append("id", new Date().getTime());
     _this.formData.append("textareainput", _this.textareainput);
     // 上传接口
@@ -166,7 +175,7 @@ export default {
       })
         .then(function(response) {
             if(response.status==200){
-            _this.$router.push({name:'QrcodePage',params: { id:  response.data.id } });
+            _this.$router.push({name:'QrcodePage',query: { id:  response.data.id } });
            }else{
                alert('传输失败');
            }
@@ -273,6 +282,12 @@ export default {
 
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
 

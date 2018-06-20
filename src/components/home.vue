@@ -2,6 +2,7 @@
 import func from './vue-temp/vue-editor-bridge';
 <template>
   <div class="home" >
+       <p>{{count}}</p>
        <p @click="gotoEditPage">跳转到editPage</p>
        <p @click="gotoVuexTestPage">跳转到vuexTest</p>
   </div>
@@ -11,10 +12,10 @@ import func from './vue-temp/vue-editor-bridge';
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
   data () {
     return {
-      
+      count:this.$store.state.subComponentState.count,
     }
   },
   methods:{
@@ -24,7 +25,8 @@ export default {
     gotoVuexTestPage:function(){
       this.$router.push({name:'VuexTest'});
     }
-  }
+  },
+ 
 }
 </script>
 <style scoped>
