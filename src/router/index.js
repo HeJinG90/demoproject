@@ -1,13 +1,29 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
-import Home from '@/components/home'
-import EditPage from '../demo/editPage'
-import QrcodePage from '../demo/qrcodePage'
-import VuexTest from '../demo/vuexTest'
+const Home = resolve => require(['../components/home'], resolve)
+const EditPage = resolve => require(['../demo/editPage'], resolve)
+const QrcodePage = resolve => require(['../demo/qrcodePage'], resolve)
+const VuexTest = resolve => require(['../demo/vuexTest'], resolve)
+const scrollBehavior = (to, from, savedPosition) => {
+    if (savedPosition) {
+        return savedPosition
+    } else {
+        const position = {}
+        if (to.hash) {
+            position.selector = to.hash
+        }
+        if (to.matched.some(m => m.meta.scrollToTop)) {
 
+            position.x = 0
+            position.y = 0
+        }
 
+        return position
+    }
+}
 const router = new Router({
+    scrollBehavior,
     routes: [{
             path: '/',
             name: 'Home',
@@ -38,7 +54,8 @@ const router = new Router({
             name: 'VuexTest',
             component: VuexTest
         }
-    ]
+
+    ],
 });
 router.beforeEach((to, from, next) => {
     next();
