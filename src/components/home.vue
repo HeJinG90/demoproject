@@ -7,8 +7,7 @@ import func from './vue-temp/vue-editor-bridge';
        <p @click="gotoVuexTestPage">跳转到vuexTest</p>
   </div>
 </template>
-<style scoped>
-</style>
+
 
 <script>
 export default {
