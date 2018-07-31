@@ -20,11 +20,11 @@ export default {
 
     },
     mutations: {
-        // mutationNumAdd(state, id) { //这里state 对应上面那个state
-        //     state.count = state.count + id;
+        // mutationNumAdd(state, num) { //这里state 对应上面那个state
+        //     state.count = state.count + num;
         // }
-        [types.MUTATIONNUMADD](state, id) { //这里state 对应上面那个state
-            state.count = state.count + id;
+        [types.MUTATIONNUMADD](state, num) { //这里state 对应上面那个state
+            state.count = state.count + num;
         }
     },
     actions: {
