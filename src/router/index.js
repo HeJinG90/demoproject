@@ -5,6 +5,7 @@ const Home = resolve => require(['../components/home'], resolve)
 const EditPage = resolve => require(['../demo/editPage'], resolve)
 const QrcodePage = resolve => require(['../demo/qrcodePage'], resolve)
 const VuexTest = resolve => require(['../demo/vuexTest'], resolve)
+const Vue3D = resolve => require(['../demo/vue3D'], resolve)
 const scrollBehavior = (to, from, savedPosition) => {
     if (savedPosition) {
         return savedPosition
@@ -53,6 +54,11 @@ const router = new Router({
             path: '/vuexTest',
             name: 'VuexTest',
             component: VuexTest
+        },
+        {
+            path: '/vue3D',
+            name: 'Vue3D',
+            component: Vue3D
         }
 
     ],
