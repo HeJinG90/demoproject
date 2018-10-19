@@ -5,6 +5,7 @@
        <p @click="gotoEditPage">跳转到editPage</p>
        <p @click="gotoVuexTestPage">跳转到vuexTest</p>
        <p @click="gotoVue3dPage">跳转到Vue3d</p>
+       <p @click="gotoCarChoosePage">跳转到carChoose</p>
   </div>
 </template>
 
@@ -30,6 +31,9 @@ export default {
     },
     gotoVue3dPage:function(){
       this.$router.push({name:'Vue3D'});
+    },
+    gotoCarChoosePage:function(){
+      this.$router.push({name:'CarChoose'});
     }
 
   },
