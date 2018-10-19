@@ -1,7 +1,7 @@
 
 <template>
   <div class="vue3D" >
-       <model-obj  src="/static/obj/tree.obj"></model-obj >
+       <model-obj @on-click="onClick" src="/static/obj/tree.obj"></model-obj >
   </div>
 </template>
 
@@ -18,7 +18,19 @@ export default {
     }
   },
   methods:{
-    
+    onClick( event ) {
+      debugger
+            console.log( event );
+            if ( !event ) {
+                if ( this.intersected ) {
+                    this.intersected.material.color.setStyle( '#fff' );
+                }
+                this.intersected = null;
+                return;
+            }
+            this.intersected = event.object;
+            this.intersected.material.color.setStyle( '#13ce66' );
+        }
   },
  
 }
