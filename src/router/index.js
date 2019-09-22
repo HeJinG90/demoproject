@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
-const Home = resolve => require(['../components/home'], resolve)
+const Home = resolve => require(['../demo/home'], resolve)
 const EditPage = resolve => require(['../demo/editPage'], resolve)
 const QrcodePage = resolve => require(['../demo/qrcodePage'], resolve)
 const VuexTest = resolve => require(['../demo/vuexTest'], resolve)
 const Vue3D = resolve => require(['../demo/vue3D'], resolve)
-const CarChoose = resolve => require(['../demo/carChoose'], resolve)
+const Componentdemo = resolve => require(['../demo/componentdemo'], resolve)
+const Eventbus = resolve => require(['../demo/eventbus'], resolve)
 const scrollBehavior = (to, from, savedPosition) => {
     if (savedPosition) {
         return savedPosition
@@ -62,10 +63,15 @@ const router = new Router({
             component: Vue3D
         },
         {
-            path: '/carChoose',
-            name: 'CarChoose',
-            component: CarChoose
-        }
+            path: '/componentdemo',
+            name: 'Componentdemo',
+            component: Componentdemo
+        },
+        {
+            path: '/eventbus',
+            name: 'Eventbus',
+            component: Eventbus
+        },
 
     ],
 });

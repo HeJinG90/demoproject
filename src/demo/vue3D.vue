@@ -10,11 +10,12 @@
 import { ModelObj  } from 'vue-3d-model'
 export default {
   components: {
-            ModelObj 
+            ModelObj ,
         },
   name: 'Home',
   data () {
     return {
+      
     }
   },
   methods:{

@@ -10,8 +10,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "ali-oss": "^6.0.1",
     "axios": "^0.18.0",
+    "crypto": "^1.0.1",
     "element-ui": "^2.4.1",
+    "postcss-px-to-viewport": "0.0.3",
     "vue": "^2.5.2",
     "vue-3d-model": "^1.0.2",
     "vue-router": "^3.0.1",
