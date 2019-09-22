@@ -1,5 +1,5 @@
 
-// import func from './vue-temp/vue-editor-bridge';
+
 
 <template>
 <transition name="fade">
@@ -197,12 +197,12 @@ export default {
   display: inline-block;
 }
 .imgDiv img {
-  width: 1.77rem;
-  height: 1.1rem;
+  width: 177px;
+  height: 110px;
 }
 .img_input {
-  width: 1.77rem;
-  height: 1.1rem;
+  width: 177px;;
+  height: 110px;
   position: absolute;
   top: 0;
   z-index: 1;
@@ -219,19 +219,19 @@ export default {
   position: relative;
 }
 .videoDiv video {
-  width: 4rem;
-  margin-left: 1.9rem;
+  width: 200px;
+  margin-left: 80px;
 }
 .videoDiv span {
-  line-height: 0.6rem;
+  line-height: 60px;
   display: inline-block;
 }
 .video_input {
-  width: 7.7rem;
-  height: 0.6rem;
+  width: 375px;
+  height: 60px;
   position: absolute;
   top: 0;
-  left: 0.1rem;
+  left: 5px;
   z-index: 1;
   -moz-opacity: 0;
   -ms-opacity: 0;
@@ -243,7 +243,7 @@ export default {
 .videoDiv div {
   border: 1px dashed #d9d9d9;
   text-align: center;
-  height: 0.6rem;
+  height: 30px;
   color: grey;
 }
 .previewWrap {

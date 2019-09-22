@@ -1,3 +1,5 @@
+import * as types from '../mutation-types'
+
 export default {
     namespaced: true,
     state: {
@@ -9,7 +11,7 @@ export default {
     },
     getters: {
         gettersNumMinus(state) {
-            return --state.count;
+            return state.count;
         },
         gettersArrquery(state) {
             return state.arr;
@@ -18,13 +20,16 @@ export default {
 
     },
     mutations: {
-        mutationNumAdd(state, id) { //这里state 对应上面那个state
-            state.count = state.count + id;
+        // mutationNumAdd(state, num) { //这里state 对应上面那个state
+        //     state.count = state.count + num;
+        // }
+        [types.MUTATIONNUMADD](state, num) { //这里state 对应上面那个state
+            state.count = state.count + num;
         }
     },
     actions: {
         actionNumAdd(context) { //context 与 store 实例具有相同方法和属性的 context 对象  但不是 store 实例本身了
-            context.commit('mutationNumAdd', 10);
+            context.commit(types.MUTATIONNUMADD, 10);
         }
 
     }

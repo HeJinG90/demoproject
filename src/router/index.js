@@ -1,13 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
-import Home from '@/components/home'
-import EditPage from '../demo/editPage'
-import QrcodePage from '../demo/qrcodePage'
-import VuexTest from '../demo/vuexTest'
+const Home = resolve => require(['../demo/home'], resolve)
+const EditPage = resolve => require(['../demo/editPage'], resolve)
+const QrcodePage = resolve => require(['../demo/qrcodePage'], resolve)
+const VuexTest = resolve => require(['../demo/vuexTest'], resolve)
+const Vue3D = resolve => require(['../demo/vue3D'], resolve)
+const Componentdemo = resolve => require(['../demo/componentdemo'], resolve)
+const Eventbus = resolve => require(['../demo/eventbus'], resolve)
+const scrollBehavior = (to, from, savedPosition) => {
+    if (savedPosition) {
+        return savedPosition
+    } else {
+        const position = {}
+        if (to.hash) {
+            position.selector = to.hash
+        }
+        if (to.matched.some(m => m.meta.scrollToTop)) {
 
+            position.x = 0
+            position.y = 0
+        }
 
+        return position
+    }
+}
 const router = new Router({
+    scrollBehavior,
     routes: [{
             path: '/',
             name: 'Home',
@@ -37,8 +56,24 @@ const router = new Router({
             path: '/vuexTest',
             name: 'VuexTest',
             component: VuexTest
-        }
-    ]
+        },
+        {
+            path: '/vue3D',
+            name: 'Vue3D',
+            component: Vue3D
+        },
+        {
+            path: '/componentdemo',
+            name: 'Componentdemo',
+            component: Componentdemo
+        },
+        {
+            path: '/eventbus',
+            name: 'Eventbus',
+            component: Eventbus
+        },
+
+    ],
 });
 router.beforeEach((to, from, next) => {
     next();
